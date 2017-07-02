@@ -21411,7 +21411,7 @@ var Hello = function (_React$Component) {
     _createClass(Hello, [{
         key: "render",
         value: function render() {
-            return React.createElement("h1", null, "Hello from ", this.props.compiler, " and ", this.props.framework, "!");
+            return React.createElement("h1", null, "Hello wapo from ", this.props.compiler, " and ", this.props.framework, "!");
         }
     }]);
 

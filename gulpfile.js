@@ -42,7 +42,7 @@ var tsify = require('tsify');
 var sourcemaps = require('gulp-sourcemaps');
 var buffer = require('vinyl-buffer');
 var paths = {
-    pages: ['src/*.html']
+    pages: ['*.html']
 };
 
 gulp.task('copyHtml', function () {
