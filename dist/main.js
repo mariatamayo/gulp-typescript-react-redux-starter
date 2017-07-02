@@ -1,7 +1,0 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-var greet_1 = require("./greet");
-console.log(greet_1.sayHello("From TypeScript"));
-console.log(greet_1.sayGoodbye("From TypeScript"));
-
-//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4udHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6Ijs7QUFBQSxpQ0FBK0M7QUFFL0MsT0FBTyxDQUFDLEdBQUcsQ0FBQyxnQkFBUSxDQUFDLGlCQUFpQixDQUFDLENBQUMsQ0FBQztBQUN6QyxPQUFPLENBQUMsR0FBRyxDQUFDLGtCQUFVLENBQUMsaUJBQWlCLENBQUMsQ0FBQyxDQUFDIiwiZmlsZSI6Im1haW4uanMiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQgeyBzYXlIZWxsbywgc2F5R29vZGJ5ZSB9IGZyb20gXCIuL2dyZWV0XCI7XG5cbmNvbnNvbGUubG9nKHNheUhlbGxvKFwiRnJvbSBUeXBlU2NyaXB0XCIpKTtcbmNvbnNvbGUubG9nKHNheUdvb2RieWUoXCJGcm9tIFR5cGVTY3JpcHRcIikpO1xuIl19
