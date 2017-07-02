@@ -1,0 +1,4 @@
+namedtuple	/home/dnoland/floobits/share/daniel-noland/pub/test.py	/^from collections import namedtuple$/;"	i	language:Python
+Data	/home/dnoland/floobits/share/daniel-noland/pub/test.py	/^class Data(namedtuple('Data', 'a b c')):$/;"	c	language:Python
+to_dict	/home/dnoland/floobits/share/daniel-noland/pub/test.py	/^    def to_dict(self) -> dict:$/;"	m	language:Python	class:Data
+x	/home/dnoland/floobits/share/daniel-noland/pub/test.py	/^x = Data(*[0, 1, Data(*[0, 1, Data(*range(3))])])$/;"	v	language:Python
