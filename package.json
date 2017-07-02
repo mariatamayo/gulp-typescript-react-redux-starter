@@ -30,8 +30,14 @@
     "watchify": "^3.9.0"
   },
   "dependencies": {
+    "@types/react-redux": "^4.4.45",
+    "@types/redux": "^3.6.0",
+    "@types/redux-thunk": "^2.1.0",
     "gulp-connect": "^5.0.0",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1",
+    "redux-thunk": "^2.2.0"
   }
 }
