@@ -23659,9 +23659,23 @@ function symbolObservablePonyfill(root) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var types_1 = require("./types");
+function changeTestState() {
+    console.log('hello is triggering an action');
+    return {
+        type: types_1.TEST,
+        payload: true
+    };
+}
+exports.changeTestState = changeTestState;
+
+},{"./types":237}],237:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.TEST = 'test';
 
-},{}],237:[function(require,module,exports){
+},{}],238:[function(require,module,exports){
 "use strict";
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -23674,6 +23688,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var React = require("react");
+var react_redux_1 = require("react-redux");
+var actions = require("../actions");
 // 'HelloProps' describes the shape of props.
 // State is never set so we use the 'undefined' type.
 
@@ -23687,8 +23703,15 @@ var Hello = function (_React$Component) {
     }
 
     _createClass(Hello, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            console.log('hello mounted, here are the props: ', this.props);
+            this.props.onComponentMount();
+        }
+    }, {
         key: "render",
         value: function render() {
+            console.log('Rendering the main component with state testWorking: ', this.props);
             return React.createElement("h1", null, "Hello !!!! from ", this.props.compiler, " and ", this.props.framework, "!");
         }
     }]);
@@ -23697,8 +23720,22 @@ var Hello = function (_React$Component) {
 }(React.Component);
 
 exports.Hello = Hello;
+var mapStateToProps = function mapStateToProps(state, ownProp) {
+    return {
+        testWorking: state.app.testWorking
+    };
+};
+var mapDispatchToProps = function mapDispatchToProps(dispatch) {
+    console.log('we are mapping dispatch to props');
+    return {
+        onComponentMount: function onComponentMount() {
+            dispatch(actions.changeTestState());
+        }
+    };
+};
+exports.default = react_redux_1.connect(mapStateToProps, mapDispatchToProps)(Hello);
 
-},{"react":214}],238:[function(require,module,exports){
+},{"../actions":236,"react":214,"react-redux":172}],239:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -23715,9 +23752,9 @@ var store = createStoreWithMiddleware(reducers_1.default);
 //     <Hello compiler="TypeScript" framework="React" />,
 //     document.getElementById("example")
 // );
-ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store }, React.createElement(hello_1.Hello, { compiler: "TypeScript", framework: "React" })), document.querySelector('#example'));
+ReactDOM.render(React.createElement(react_redux_1.Provider, { store: store }, React.createElement(hello_1.default, { compiler: "TypeScript", framework: "React" })), document.querySelector('#example'));
 
-},{"./components/hello":237,"./reducers":240,"react":214,"react-dom":35,"react-redux":172,"redux":221,"redux-thunk":215}],239:[function(require,module,exports){
+},{"./components/hello":238,"./reducers":241,"react":214,"react-dom":35,"react-redux":172,"redux":221,"redux-thunk":215}],240:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -23728,16 +23765,18 @@ function default_1() {
     };
     var action = arguments[1];
 
+    console.log('ARE WE HITTING THE REDUCER???', action, state);
     switch (action.type) {
         case types_1.TEST:
             return Object.assign({}, state, { testWorking: action.payload });
     }
+    console.log('hello in the reducer, not hitting any action case', state);
     return state;
 }
 exports.default = default_1;
 ;
 
-},{"../actions/types":236}],240:[function(require,module,exports){
+},{"../actions/types":237}],241:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -23749,6 +23788,6 @@ var rootReducer = redux_1.combineReducers({
 });
 exports.default = rootReducer;
 
-},{"./appReducers":239,"redux":221}]},{},[238])
+},{"./appReducers":240,"redux":221}]},{},[239])
 
 //# sourceMappingURL=bundle.js.map
