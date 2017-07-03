@@ -42,6 +42,7 @@ var tsify = require('tsify');
 var sourcemaps = require('gulp-sourcemaps');
 var watchify = require("watchify");
 var buffer = require('vinyl-buffer');
+var gutil = require("gulp-util");
 var paths = {
     pages: ['*.html']
 };
@@ -82,4 +83,4 @@ function bundle() {
 }
 
 watchedBrowserify.on("update", bundle);
-// watchedBrowserify.on("log", gutil.log);
+watchedBrowserify.on("log", gutil.log);

@@ -22,6 +22,7 @@
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
     "pump": "^1.0.2",
+    "react-router-dom": "^4.1.1",
     "tsify": "^3.0.1",
     "typescript": "^2.4.1",
     "uglify": "^0.1.5",
@@ -31,6 +32,7 @@
   },
   "dependencies": {
     "@types/react-redux": "^4.4.45",
+    "@types/react-router-dom": "^4.0.5",
     "@types/redux": "^3.6.0",
     "@types/redux-thunk": "^2.1.0",
     "gulp-connect": "^5.0.0",

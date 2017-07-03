@@ -4,15 +4,15 @@ import{
 
 export default function (state =
   {
-    testWorking: false
+    testWorking: false,
+    compiler: "Typescript",
+    framework: "React"
   }
 , action)
 {
-  console.log('ARE WE HITTING THE REDUCER???', action, state)
   switch(action.type){
     case TEST:
     return {...state, testWorking: action.payload}
   }
-  console.log('hello in the reducer, not hitting any action case', state)
   return state;
 };

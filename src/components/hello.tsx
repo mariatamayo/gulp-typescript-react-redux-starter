@@ -1,6 +1,7 @@
 import * as React from "react";
 import { connect, MapStateToProps, MapDispatchToProps } from 'react-redux';
 import * as actions from '../actions';
+import { Link } from 'react-router-dom';
 
 // In the HelloProps we determine the shape of the props
 
@@ -13,11 +14,15 @@ interface TestInterface {
 interface TestStatePropertiesInput {
   app: {
     testWorking: boolean;
+    compiler: string;
+    framework: string;
   };
 }
 
 interface TestStatePropertiesOutput {
   testWorking: boolean;
+  compiler: string;
+  framework: string;
 }
 
 interface TestDispatchProperties {
@@ -28,32 +33,36 @@ interface TestDispatchProperties {
 
 export class Hello extends React.Component<HelloProps & TestDispatchProperties> {
 
-    componentDidMount(){
-      console.log('hello mounted, here are the props: ', this.props)
-      this.props.onComponentMount()
-    }
-    render() {
-        console.log('Rendering the main component with state testWorking: ', this.props)
-        return <h1>Hello mi lovrtsggfssggf from {this.props.compiler} and {this.props.framework}!</h1>;
-    }
+  componentDidMount(){
+    this.props.onComponentMount()
+  }
+  render() {
+    return (
+      <div>
+        <h1>Hello !!!! from {this.props.compiler} and {this.props.framework}!</h1>
+        <Link to='/sampleRoute'>
+          <button>Take me there</button>
+        </Link>
+      </div>
+    );
+  }
 }
 
 // In the arguments of mapStateToProps we state that the arguments should be of the type determined
 // in TestStatePropertiesInput and the output of the type in TestStatePropertiesOutput
 
 const mapStateToProps = (state: TestStatePropertiesInput, ownProp?: any): TestStatePropertiesOutput => ({
-    testWorking: state.app.testWorking
+  testWorking: state.app.testWorking,
+  compiler: state.app.compiler,
+  framework: state.app.framework
 });
 
 // In mapDispatchToProps we making the onComponentMount method available in props
 
-const mapDispatchToProps = (dispatch: any): TestDispatchProperties => {
-  console.log('we are mapping dispatch to props')
-  return {
-    onComponentMount: () => {
-      dispatch(actions.changeTestState())
-    }
+const mapDispatchToProps = (dispatch: any): TestDispatchProperties => ({
+  onComponentMount: () => {
+    dispatch(actions.changeTestState())
   }
-}
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Hello);
