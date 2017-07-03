@@ -34,7 +34,7 @@ export class Hello extends React.Component<HelloProps & TestDispatchProperties> 
     }
     render() {
         console.log('Rendering the main component with state testWorking: ', this.props)
-        return <h1>Hello !!!! from {this.props.compiler} and {this.props.framework}!</h1>;
+        return <h1>Hello mi lovrtsggfssggf from {this.props.compiler} and {this.props.framework}!</h1>;
     }
 }
 
